@@ -1,0 +1,32 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Puzzle {
+  +{static} main(args : String[]) : void
+}
+
+class Reader {
+  -words : ArrayList<String>
+  -clues : ArrayList<String>
+  +submit(word : String, clue : String) : void
+  +getWordCount() : int
+  +getWords() : ArrayList<String>
+  +getClues() : ArrayList<String>
+}
+
+class Tokenizer {
+  +getTokens(words : ArrayList<String>) : ArrayList<String>
+  +randomizeTokens(tokens : ArrayList<String>) : ArrayList<String>
+}
+
+class PuzzlePrint {
+  +printTokens(tokens : ArrayList<String>) : void
+  +printClues(clues : ArrayList<String>) : void
+  +printAnswerKey(words : ArrayList<String>) : void
+}
+
+Puzzle ..> Reader : uses
+Puzzle ..> Tokenizer : uses
+Puzzle ..> PuzzlePrint : uses
+
+@enduml
